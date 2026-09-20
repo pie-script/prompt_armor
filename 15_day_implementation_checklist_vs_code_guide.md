@@ -15,7 +15,7 @@
   - [x] Initialize Git repository and create standard directory structure (`models/`, `security/`, `services/`, `dashboard/`, `tests/`)
   - [x] Create and activate Python virtual environment (`python -m venv .venv`)
   - [x] Create `.gitignore` ignoring `.venv/`, `__pycache__/`, `.env`, and test artifacts
-  - [ ] Install baseline dependencies: `fastapi`, `uvicorn[standard]`, `pydantic`, `python-dotenv`
+  - [x] Install baseline dependencies: `fastapi`, `uvicorn[standard]`, `pydantic`, `python-dotenv`
 
 - [ ] **Day 2: Configuration & Request Schema Modeling**
   - [ ] Implement `config.py` with centralized environment variable loader (host, port, API credentials)
