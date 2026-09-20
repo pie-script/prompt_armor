@@ -1,0 +1,124 @@
+# AI Security Gateway — 15-Day Implementation Checklist
+
+> **Tracking in VS Code**:
+> - Toggle tasks manually by changing `[ ]` to `[x]`.
+> - **Interactive Mode**: Press `Ctrl+Shift+V` (or `Cmd+Shift+V` on macOS) to open the Markdown Preview, where checkboxes can be toggled interactively.
+> - **Recommended Extensions**: 
+>   - *Markdown All in One* (`yzhang.markdown-all-in-one`): Use `Alt+C` to toggle task completion on the current line.
+>   - *Todo Tree* (`Gruntfuggly.todo-tree`): Surface TODO markers across your repository in the activity bar.
+
+---
+
+## Phase 1: Project Scaffolding & The Baseline Proxy (Days 1–3)
+
+- [ ] **Day 1: Project Isolation & Environment Setup**
+  - [ ] Initialize Git repository and create standard directory structure (`models/`, `security/`, `services/`, `dashboard/`, `tests/`)
+  - [ ] Create and activate Python virtual environment (`python -m venv .venv`)
+  - [ ] Create `.gitignore` ignoring `.venv/`, `__pycache__/`, `.env`, and test artifacts
+  - [ ] Install baseline dependencies: `fastapi`, `uvicorn[standard]`, `pydantic`, `python-dotenv`
+
+- [ ] **Day 2: Configuration & Request Schema Modeling**
+  - [ ] Implement `config.py` with centralized environment variable loader (host, port, API credentials)
+  - [ ] Define incoming request schemas in `schemas.py` with string length boundary ($1 \le \text{chars} \le 4000$) and optional `session_id`/`user_id`
+  - [ ] Define standard clean response schema (status, latency, model payload)
+  - [ ] Define blocked response schema (`BLOCKED` status, threat classification, triggered security rule)
+
+- [ ] **Day 3: Baseline Gateway Routing**
+  - [ ] Implement `POST /v1/chat` controller in `main.py`
+  - [ ] Connect input schemas to ensure automated HTTP 422 rejections on schema violations
+  - [ ] Configure Uvicorn hot-reloading and smoke-test endpoints via Swagger UI at `/docs`
+
+---
+
+## Phase 2: Relational Audit Logging & Persistence (Days 4–6)
+
+- [ ] **Day 4: Database Schema Design**
+  - [ ] Configure SQLite connection and engine in `models/database.py`
+  - [ ] Define `audit_events` schema with relational columns:
+    - [ ] `id` (Integer Primary Key, autoincrementing)
+    - [ ] `timestamp` (DateTime, indexed)
+    - [ ] `client_ip` (String)
+    - [ ] `raw_prompt` (Text)
+    - [ ] `sanitized_prompt` (Text)
+    - [ ] `decision` (`ALLOWED` or `BLOCKED`)
+    - [ ] `threat_category` (`NONE`, `LLM01_INJECTION`, `LLM02_LEAK`, `LLM08_CONTEXT_EXTRACTION`)
+    - [ ] `confidence_score` (Float: $0.0$ to $1.0$)
+    - [ ] `rule_triggered` (String)
+
+- [ ] **Day 5: Database CRUD & Write Operations**
+  - [ ] Write dedicated event persistence function in `services/audit.py`
+  - [ ] Implement secure fail-closed error boundaries: if audit writes fail, return standard system errors rather than hanging or leaking state
+
+- [ ] **Day 6: Query Endpoints for Security Auditing**
+  - [ ] Implement read-only endpoint `GET /v1/audit/logs` with pagination (`limit`, `offset`)
+  - [ ] Add query filter parameter to retrieve only blocked threat entries
+  - [ ] Verify serialization and pagination behavior via `/docs`
+
+---
+
+## Phase 3: Rule-Based Threat & PII Engines (Days 7–9)
+
+- [ ] **Day 7: Heuristic Injection Scanner (Static Detection)**
+  - [ ] Assemble catalog of jailbreak phrases, role-override directives, and markers in `security/heuristics.py`
+  - [ ] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
+  - [ ] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
+
+- [ ] **Day 8: Secrets & PII Redaction Engine**
+  - [ ] Compile regex token patterns for API keys, JWTs, card/ID numbers, emails, and phone numbers in `security/pii_scrubber.py`
+  - [ ] Implement string transformation replacing sensitive entities with masks (e.g., `[REDACTED_API_KEY]`, `[REDACTED_EMAIL]`)
+  - [ ] Write unit checks ensuring masked strings (not raw secrets) propagate downstream
+
+- [ ] **Day 9: Interceptor Pipeline Integration**
+  - [ ] Chain heuristic engine and PII scrubber sequentially inside `POST /v1/chat`
+  - [ ] Test edge case: explicit prompt injections log as `BLOCKED` and return HTTP 403 immediately without external calls
+  - [ ] Test edge case: PII submissions persist sanitized prompt records and allow request execution to proceed
+
+---
+
+## Phase 4: Autonomous LLM Semantic Judge & Forwarding (Days 10–12)
+
+- [ ] **Day 10: Semantic Triage Architecture**
+  - [ ] Install `google-genai` SDK and configure API keys in `.env`
+  - [ ] In `security/llm_guard.py`, build AppSec Reviewer judge prompt targeting `gemini-3.5-flash-lite`
+  - [ ] Enforce machine-readable JSON output: `is_jailbreak` (bool), `risk_category` (str), `risk_score` (float $0.0$–$1.0$), `reasoning` (str)
+
+- [ ] **Day 11: Hybrid Evaluation Gating & Downstream Dispatch**
+  - [ ] Implement decision tree in `services/proxy.py`:
+    - [ ] Fast heuristic match $\rightarrow$ immediate reject ($0\text{ ms}$ external latency)
+    - [ ] Clean heuristic $\rightarrow$ conditionally invoke Gemini judge on complex prompts
+    - [ ] High-risk judge verdict $\rightarrow$ record incident to SQLite and return HTTP 403
+    - [ ] Clean verdict $\rightarrow$ forward prompt to downstream model and capture total latency
+
+- [ ] **Day 12: Automated Attack Suite & Adversarial Testing**
+  - [ ] Build adversarial test runner in `tests/test_heuristics.py`
+  - [ ] Create 10 benign enterprise baseline prompts (summarization, SQL queries, code explanations)
+  - [ ] Create 10 adversarial attacks (jailbreaks, instruction overrides, system-prompt extraction)
+  - [ ] Execute test suite to confirm $0\%$ false-positive rate on benign queries and $100\%$ interception of adversarial attacks
+
+---
+
+## Phase 5: Visual Dashboard, Packaging & Deliverables (Days 13–15)
+
+- [ ] **Day 13: SOC Analytics Dashboard**
+  - [ ] Build Streamlit SOC dashboard in `dashboard/audit_view.py` querying `data/security_logs.db`
+  - [ ] Implement key metric indicators:
+    - [ ] Total Inspected Prompts
+    - [ ] Blocked Attacks (Count & Percentage)
+    - [ ] PII Scrub Events
+    - [ ] Mean Gateway Latency ($\text{ms}$)
+  - [ ] Render live-updating audit log table with severity-badged rows
+
+- [ ] **Day 14: System Hardening & Documentation**
+  - [ ] Freeze pinned dependencies to `requirements.txt`
+  - [ ] Provide `.env.example` with setup placeholders (`GEMINI_API_KEY`, `GATEWAY_HOST`, `GATEWAY_PORT`)
+  - [ ] Write `README.md` following AppSec industry guidelines:
+    - [ ] Threat model & OWASP Top 10 for LLM coverage (LLM01, LLM02, LLM08)
+    - [ ] Architecture and request pipeline flow diagram
+    - [ ] Setup and local launch instructions for FastAPI and Streamlit
+    - [ ] Sample `curl` interactions showing HTTP 200 vs HTTP 403 responses
+
+- [ ] **Day 15: Final Verification & Portfolio Artifacts**
+  - [ ] Perform fresh end-to-end run: database init, FastAPI boot, Streamlit launch, and payload execution
+  - [ ] Capture CLI output screenshot showcasing intercepted HTTP 403 injection attempts
+  - [ ] Capture Streamlit dashboard screenshot displaying SOC audit analytics
+  - [ ] Commit all code, push clean repository to GitHub, and create release tag
