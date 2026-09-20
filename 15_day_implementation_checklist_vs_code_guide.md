@@ -11,7 +11,7 @@
 
 ## Phase 1: Project Scaffolding & The Baseline Proxy (Days 1–3)
 
-- [ ] **Day 1: Project Isolation & Environment Setup**
+- [x] **Day 1: Project Isolation & Environment Setup**
   - [ ] Initialize Git repository and create standard directory structure (`models/`, `security/`, `services/`, `dashboard/`, `tests/`)
   - [ ] Create and activate Python virtual environment (`python -m venv .venv`)
   - [ ] Create `.gitignore` ignoring `.venv/`, `__pycache__/`, `.env`, and test artifacts
