@@ -16,4 +16,11 @@ class SecurityViolationDetail(BaseModel):
     confidence_score : float
     timestamp :datetime
     
-
+class PromptResponse(BaseModel):
+    status :str = "ALLOWED" # ALLOWED/BLOCKED by deafult allowed
+    sanitized_prompt : str
+    latency_ms :float
+    model_response : Optional[str] =None
+    
+    
+    
