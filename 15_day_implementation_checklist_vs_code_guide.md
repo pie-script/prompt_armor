@@ -18,7 +18,7 @@
   - [x] Install baseline dependencies: `fastapi`, `uvicorn[standard]`, `pydantic`, `python-dotenv`
 
 - [ ] **Day 2: Configuration & Request Schema Modeling**
-  - [ ] Implement `config.py` with centralized environment variable loader (host, port, API credentials)
+  - [x] Implement `config.py` with centralized environment variable loader (host, port, API credentials)
   - [ ] Define incoming request schemas in `schemas.py` with string length boundary ($1 \le \text{chars} \le 4000$) and optional `session_id`/`user_id`
   - [ ] Define standard clean response schema (status, latency, model payload)
   - [ ] Define blocked response schema (`BLOCKED` status, threat classification, triggered security rule)
