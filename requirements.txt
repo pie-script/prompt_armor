@@ -1,0 +1,27 @@
+# Web framework
+fastapi
+uvicorn[standard]
+
+# Data validation
+pydantic
+pydantic-settings
+
+# Environment
+python-dotenv
+
+# Database
+sqlalchemy
+
+# LLM / AI
+google-generativeai
+
+# Dashboard
+streamlit
+
+# HTTP client (proxy dispatcher)
+httpx
+
+# Testing
+pytest
+pytest-asyncio
+httpx
