@@ -9,4 +9,11 @@ class PromptRequest(BaseModel):
     session_id :Optional[str]=None
     
 
+class SecurityViolationDetail(BaseModel):
+    status :str="BLOCKED" # default blocked
+    threat_category :str # eg "OWASP_LLM01_INJECTION", "OWASP_LLM02_LEAK")
+    rule_triggered : str
+    confidence_score : float
+    timestamp :datetime
+    
 
