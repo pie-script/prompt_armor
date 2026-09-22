@@ -33,3 +33,7 @@ class AuditEvent(Base):
     confidence_score=Column(Float,default=0.0)
     rule_triggered=Column(Float,nullable=True)
     latency_ms=Column(Float,nullable=False)
+
+def init_db():
+    # Creates all tables that don't already exist
+    Base.metadata.create_all(bind=engine)
