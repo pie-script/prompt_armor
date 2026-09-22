@@ -7,3 +7,7 @@ app=FastAPI(
     title=settings.APP_NAME,
     debug=settings.DEBUG
 )
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy", "service":settings.APP_NAME}
