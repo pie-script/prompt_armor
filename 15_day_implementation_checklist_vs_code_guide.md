@@ -17,7 +17,7 @@
   - [x] Create `.gitignore` ignoring `.venv/`, `__pycache__/`, `.env`, and test artifacts
   - [x] Install baseline dependencies: `fastapi`, `uvicorn[standard]`, `pydantic`, `python-dotenv`
 
-- [ ] **Day 2: Configuration & Request Schema Modeling**
+- [x] **Day 2: Configuration & Request Schema Modeling**
   - [x] Implement `config.py` with centralized environment variable loader (host, port, API credentials)
   - [x] Define incoming request schemas in `schemas.py` with string length boundary ($1 \le \text{chars} \le 4000$) and optional `session_id`/`user_id`
   - [x] Define standard clean response schema (status, latency, model payload)
