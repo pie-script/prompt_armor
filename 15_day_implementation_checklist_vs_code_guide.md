@@ -23,10 +23,10 @@
   - [x] Define standard clean response schema (status, latency, model payload)
   - [x] Define blocked response schema (`BLOCKED` status, threat classification, triggered security rule)
 
-- [ ] **Day 3: Baseline Gateway Routing**
-  - [ ] Implement `POST /v1/chat` controller in `main.py`
-  - [ ] Connect input schemas to ensure automated HTTP 422 rejections on schema violations
-  - [ ] Configure Uvicorn hot-reloading and smoke-test endpoints via Swagger UI at `/docs`
+- [x] **Day 3: Baseline Gateway Routing**
+  - [x] Implement `POST /v1/chat` controller in `main.py`
+  - [x] Connect input schemas to ensure automated HTTP 422 rejections on schema violations
+  - [x] Configure Uvicorn hot-reloading and smoke-test endpoints via Swagger UI at `/docs`
 
 ---
 
