@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
 
-class AuditResponse(BaseModel):
+class AuditEventResponse(BaseModel):
     id:int
     timestamp:datetime
     client_ip:Optional[str]
