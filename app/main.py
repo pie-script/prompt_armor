@@ -31,14 +31,14 @@ async def inspect_chat(request:PromptRequest):
 def lists_events(
     skip :int=0,
     limit: int =50,
-    status: Optional[str]=None,
+    decision: Optional[str]=None,
     db:Session=Depends(get_db)
 ):
     logs=get_audit_logs(
         db=db,
         skip=skip,
         limit=limit,
-        decision=status
+        decision=decision
     )
     return logs
     
