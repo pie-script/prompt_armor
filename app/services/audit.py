@@ -1,6 +1,23 @@
 from app.models.database import SessionLocal, AuditEvent
 from sqlalchemy.orm import Session
 from typing import Optional
+from pydantic import BaseModel
+from datetime import datetime
+
+class AuditResponse(BaseModel):
+    id:int
+    timestamp:datetime
+    client_ip:Optional[str]
+    user_id:Optional[str]
+    raw_prompt:str
+    sanitized_prompt:str
+    decision:str
+    threat_category:str
+    confidence_score:float
+    rule_triggered:Optional[str]
+    latency_ms:float
+
+model_config={"from atrributes":True}
 
 def get_db() :
 
@@ -72,3 +89,4 @@ def get_audit_stats(db: Session):
         "allowed_prompts":allowed,
         "blocked_prompts":blocked
     } 
+
