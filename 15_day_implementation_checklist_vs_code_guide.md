@@ -45,9 +45,9 @@
     - [x] `confidence_score` (Float: $0.0$ to $1.0$)
     - [x] `rule_triggered` (String)
 
-- [ ] **Day 5: Database CRUD & Write Operations**
-  - [ ] Write dedicated event persistence function in `services/audit.py`
-  - [ ] Implement secure fail-closed error boundaries: if audit writes fail, return standard system errors rather than hanging or leaking state
+- [x] **Day 5: Database CRUD & Write Operations**
+  - [x] Write dedicated event persistence function in `services/audit.py`
+  - [x] Implement secure fail-closed error boundaries: if audit writes fail, return standard system errors rather than hanging or leaking state
 
 - [ ] **Day 6: Query Endpoints for Security Auditing**
   - [ ] Implement read-only endpoint `GET /v1/audit/logs` with pagination (`limit`, `offset`)
