@@ -41,3 +41,27 @@ def normalize_text(text:str)->str:
     text = re.sub(r'[`*_~]+', '', text)        
     text=text.strip()
     return text
+
+def scan_heuristics(prompt:str):
+    normalized=normalize_text(prompt)
+
+    for category,phrases in THREAT_SIGNATURES.items():
+        for phrase in phrases:
+            pattern=r'\b' + re.escape(phrase)+r'\b'
+            if re.search(pattern,normalized):
+                return {
+                    "is_threat":True,
+                    "threat_category":category,
+                    "rule_triggered":phrase,
+                    "confidence_score":1.0,
+                    "severity" :"HIGH"
+                }
+    
+    return {
+        "is_threat": False,
+        "threat_category": "NONE",
+        "rule_triggered": None,
+        "confidence_score": 0.0,
+        "severity": "LOW"
+    }
+            
