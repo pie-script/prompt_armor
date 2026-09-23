@@ -16,7 +16,7 @@ class AuditEventResponse(BaseModel):
     confidence_score:float
     rule_triggered:Optional[str]
     latency_ms:float
-    model_config={"from_atrributes":True}
+    model_config={"from_attributes":True}
 
 def get_db() :
 
