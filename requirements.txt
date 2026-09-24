@@ -13,7 +13,8 @@ python-dotenv
 sqlalchemy
 
 # LLM / AI
-google-generativeai
+groq
+google-genai
 
 # Dashboard
 streamlit
