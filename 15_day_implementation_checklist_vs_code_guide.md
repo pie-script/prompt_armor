@@ -68,10 +68,10 @@
   - [x] Implement string transformation replacing sensitive entities with masks (e.g., `[REDACTED_API_KEY]`, `[REDACTED_EMAIL]`)
   - [x] Write unit checks ensuring masked strings (not raw secrets) propagate downstream
 
-- [ ] **Day 9: Interceptor Pipeline Integration**
-  - [ ] Chain heuristic engine and PII scrubber sequentially inside `POST /v1/chat`
-  - [ ] Test edge case: explicit prompt injections log as `BLOCKED` and return HTTP 403 immediately without external calls
-  - [ ] Test edge case: PII submissions persist sanitized prompt records and allow request execution to proceed
+- [x] **Day 9: Interceptor Pipeline Integration**
+  - [x] Chain heuristic engine and PII scrubber sequentially inside `POST /v1/chat`
+  - [x] Test edge case: explicit prompt injections log as `BLOCKED` and return HTTP 403 immediately without external calls
+  - [x] Test edge case: PII submissions persist sanitized prompt records and allow request execution to proceed
 
 ---
 
