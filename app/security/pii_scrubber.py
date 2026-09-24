@@ -8,7 +8,7 @@ TARGET_PATTERNS=[
     ("BEARER_TOKEN", re.compile(r'\bBearer\s+[a-zA-Z0-9_\-\.]{20,}\b')),
 
     ("EMAIL",re.compile(r'\b[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+\b')),
-    ("PHONE_NUMBERS",re.compile(r'\b(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b')),
+    ("PHONE_NUMBERS",re.compile(r'\b(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?(?:\d{3}[-.\s]?)?\d{4}\b')),
     ("CREDIT_CARD",re.compile(r'\b(?:\d{4}[-\s]?){3}\d{4}\b')),
     ("SENSITIVE_IP",re.compile(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')),
     
