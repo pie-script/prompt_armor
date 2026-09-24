@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     HOST: str = "127.0.0.1"
     PORT: int = 8000
     GEMINI_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
     MAX_PROMPT_LENGTH: int = 4000
 
 

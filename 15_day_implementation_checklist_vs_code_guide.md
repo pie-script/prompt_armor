@@ -77,10 +77,10 @@
 
 ## Phase 4: Autonomous LLM Semantic Judge & Forwarding (Days 10–12)
 
-- [ ] **Day 10: Semantic Triage Architecture**
-  - [ ] Install `google-genai` SDK and configure API keys in `.env`
-  - [ ] In `security/llm_guard.py`, build AppSec Reviewer judge prompt targeting `gemini-3.5-flash-lite`
-  - [ ] Enforce machine-readable JSON output: `is_jailbreak` (bool), `risk_category` (str), `risk_score` (float $0.0$–$1.0$), `reasoning` (str)
+- [x] **Day 10: Semantic Triage Architecture**
+  - [x] Install `google-genai` SDK and configure API keys in `.env`
+  - [x] In `security/llm_guard.py`, build AppSec Reviewer judge prompt targeting `gemini-3.5-flash-lite`
+  - [x] Enforce machine-readable JSON output: `is_jailbreak` (bool), `risk_category` (str), `risk_score` (float $0.0$–$1.0$), `reasoning` (str)
 
 - [ ] **Day 11: Hybrid Evaluation Gating & Downstream Dispatch**
   - [ ] Implement decision tree in `services/proxy.py`:
