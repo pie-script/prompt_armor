@@ -1,11 +1,12 @@
-from fastapi import FastAPI, status, HTTPException, Depends
+from fastapi import FastAPI, Request,status, HTTPException, Depends
 import time
 from app.config import settings
 from app.models.schemas import PromptRequest,PromptResponse
 from sqlalchemy.orm import Session
 from typing import List,Optional
 from app.models.database import AuditEvent
-from app.services.audit import AuditEventResponse,get_db,get_audit_logs,get_audit_stats
+from app.services.audit import AuditEventResponse,get_db,get_audit_logs,get_audit_stats,log_audit_event
+from app.security.pii_scrubber import scrub_sensitive_data
 
 app=FastAPI(
     title=settings.APP_NAME,
