@@ -63,15 +63,15 @@
   - [x] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
   - [x] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
 
-- [ ] **Day 8: Secrets & PII Redaction Engine**
-  - [ ] Compile regex token patterns for API keys, JWTs, card/ID numbers, emails, and phone numbers in `security/pii_scrubber.py`
-  - [ ] Implement string transformation replacing sensitive entities with masks (e.g., `[REDACTED_API_KEY]`, `[REDACTED_EMAIL]`)
-  - [ ] Write unit checks ensuring masked strings (not raw secrets) propagate downstream
+- [x] **Day 8: Secrets & PII Redaction Engine**
+  - [x] Compile regex token patterns for API keys, JWTs, card/ID numbers, emails, and phone numbers in `security/pii_scrubber.py`
+  - [x] Implement string transformation replacing sensitive entities with masks (e.g., `[REDACTED_API_KEY]`, `[REDACTED_EMAIL]`)
+  - [x] Write unit checks ensuring masked strings (not raw secrets) propagate downstream
 
-- [ ] **Day 9: Interceptor Pipeline Integration**
-  - [ ] Chain heuristic engine and PII scrubber sequentially inside `POST /v1/chat`
-  - [ ] Test edge case: explicit prompt injections log as `BLOCKED` and return HTTP 403 immediately without external calls
-  - [ ] Test edge case: PII submissions persist sanitized prompt records and allow request execution to proceed
+- [x] **Day 9: Interceptor Pipeline Integration**
+  - [x] Chain heuristic engine and PII scrubber sequentially inside `POST /v1/chat`
+  - [x] Test edge case: explicit prompt injections log as `BLOCKED` and return HTTP 403 immediately without external calls
+  - [x] Test edge case: PII submissions persist sanitized prompt records and allow request execution to proceed
 
 ---
 
