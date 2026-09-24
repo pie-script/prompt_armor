@@ -58,10 +58,10 @@
 
 ## Phase 3: Rule-Based Threat & PII Engines (Days 7–9)
 
-- [ ] **Day 7: Heuristic Injection Scanner (Static Detection)**
-  - [ ] Assemble catalog of jailbreak phrases, role-override directives, and markers in `security/heuristics.py`
-  - [ ] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
-  - [ ] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
+- [x] **Day 7: Heuristic Injection Scanner (Static Detection)**
+  - [x] Assemble catalog of jailbreak phrases, role-override directives, and markers in `security/heuristics.py`
+  - [x] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
+  - [x] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
 
 - [ ] **Day 8: Secrets & PII Redaction Engine**
   - [ ] Compile regex token patterns for API keys, JWTs, card/ID numbers, emails, and phone numbers in `security/pii_scrubber.py`
