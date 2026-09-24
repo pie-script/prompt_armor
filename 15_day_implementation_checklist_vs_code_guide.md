@@ -49,19 +49,19 @@
   - [x] Write dedicated event persistence function in `services/audit.py`
   - [x] Implement secure fail-closed error boundaries: if audit writes fail, return standard system errors rather than hanging or leaking state
 
-- [ ] **Day 6: Query Endpoints for Security Auditing**
-  - [ ] Implement read-only endpoint `GET /v1/audit/logs` with pagination (`limit`, `offset`)
-  - [ ] Add query filter parameter to retrieve only blocked threat entries
-  - [ ] Verify serialization and pagination behavior via `/docs`
+- [x] **Day 6: Query Endpoints for Security Auditing**
+  - [x] Implement read-only endpoint `GET /v1/audit/logs` with pagination (`limit`, `offset`)
+  - [x] Add query filter parameter to retrieve only blocked threat entries
+  - [x] Verify serialization and pagination behavior via `/docs`
 
 ---
 
 ## Phase 3: Rule-Based Threat & PII Engines (Days 7–9)
 
-- [ ] **Day 7: Heuristic Injection Scanner (Static Detection)**
-  - [ ] Assemble catalog of jailbreak phrases, role-override directives, and markers in `security/heuristics.py`
-  - [ ] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
-  - [ ] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
+- [x] **Day 7: Heuristic Injection Scanner (Static Detection)**
+  - [x] Assemble catalog of jailbreak phrases, role-override directives, and markers in `security/heuristics.py`
+  - [x] Implement string normalization helper (whitespace collapse, lowercasing, leetspeak normalization)
+  - [x] Implement evaluation logic returning structured verdict (`is_flagged`, `signature`, `severity`)
 
 - [ ] **Day 8: Secrets & PII Redaction Engine**
   - [ ] Compile regex token patterns for API keys, JWTs, card/ID numbers, emails, and phone numbers in `security/pii_scrubber.py`
