@@ -89,11 +89,11 @@
     - [x] High-risk judge verdict $\rightarrow$ record incident to SQLite and return HTTP 403
     - [x] Clean verdict $\rightarrow$ forward prompt to downstream model and capture total latency
 
-- [ ] **Day 12: Automated Attack Suite & Adversarial Testing**
-  - [ ] Build adversarial test runner in `tests/test_heuristics.py`
-  - [ ] Create 10 benign enterprise baseline prompts (summarization, SQL queries, code explanations)
-  - [ ] Create 10 adversarial attacks (jailbreaks, instruction overrides, system-prompt extraction)
-  - [ ] Execute test suite to confirm $0\%$ false-positive rate on benign queries and $100\%$ interception of adversarial attacks
+- [x] **Day 12: Automated Attack Suite & Adversarial Testing**
+  - [x] Build adversarial test runner in `tests/test_attack_suite.py`
+  - [x] Create 10 benign enterprise baseline prompts (summarization, SQL queries, code explanations)
+  - [x] Create 10 adversarial attacks (jailbreaks, instruction overrides, system-prompt extraction)
+  - [x] Execute test suite to confirm $0\%$ false-positive rate on benign queries and $100\%$ interception of adversarial attacks
 
 ---
 
