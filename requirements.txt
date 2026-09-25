@@ -1,28 +1,36 @@
-# Web framework
-fastapi
-uvicorn[standard]
+# =============================================================================
+# PromptArmor: Enterprise AI Security Gateway & Sentinel
+# Pinned Dependency Specification (Day 14 System Hardening)
+# =============================================================================
 
-# Data validation
-pydantic
-pydantic-settings
+# Core Web Framework & Ingress Server
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+starlette==1.6.0
 
-# Environment
-python-dotenv
+# Schema Validation & Settings
+pydantic==2.13.5
+pydantic-settings==2.15.0
 
-# Database
-sqlalchemy
+# Environment Configuration
+python-dotenv==1.2.3
 
-# LLM / AI
-groq
-google-genai
+# Database & Telemetry Storage
+sqlalchemy==2.0.54
 
-# Dashboard
-streamlit
+# AI Security Models & Providers
+groq==1.7.0
+google-genai==2.25.0
 
-# HTTP client (proxy dispatcher)
-httpx
+# SOC Mission Control & Visual Analytics
+streamlit==1.64.0
+plotly==7.1.0
+pandas==3.0.6
 
-# Testing
-pytest
-pytest-asyncio
-httpx
+# HTTP Ingress & Proxy Clients
+httpx==0.28.1
+requests==2.34.2
+
+# Adversarial Attack Suite & Testing
+pytest==9.1.1
+pytest-asyncio==1.4.0
