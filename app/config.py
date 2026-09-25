@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     PORT: int = 8000
     GEMINI_API_KEY: str = ""
     GROQ_API_KEY: str = ""
+    LLM_GUARD_MODEL: str = "openai/gpt-oss-safeguard-20b"
+    DOWNSTREAM_LLM_MODEL: str = "openai/gpt-oss-120b"  
     MAX_PROMPT_LENGTH: int = 4000
 
 
