@@ -82,12 +82,12 @@
   - [x] In `security/llm_guard.py`, build AppSec Reviewer judge prompt targeting `gemini-3.5-flash-lite`
   - [x] Enforce machine-readable JSON output: `is_jailbreak` (bool), `risk_category` (str), `risk_score` (float $0.0$–$1.0$), `reasoning` (str)
 
-- [ ] **Day 11: Hybrid Evaluation Gating & Downstream Dispatch**
-  - [ ] Implement decision tree in `services/proxy.py`:
-    - [ ] Fast heuristic match $\rightarrow$ immediate reject ($0\text{ ms}$ external latency)
-    - [ ] Clean heuristic $\rightarrow$ conditionally invoke Gemini judge on complex prompts
-    - [ ] High-risk judge verdict $\rightarrow$ record incident to SQLite and return HTTP 403
-    - [ ] Clean verdict $\rightarrow$ forward prompt to downstream model and capture total latency
+- [x] **Day 11: Hybrid Evaluation Gating & Downstream Dispatch**
+  - [x] Implement decision tree in `services/proxy.py`:
+    - [x] Fast heuristic match $\rightarrow$ immediate reject ($0\text{ ms}$ external latency)
+    - [x] Clean heuristic $\rightarrow$ conditionally invoke Groq semantic judge on complex prompts
+    - [x] High-risk judge verdict $\rightarrow$ record incident to SQLite and return HTTP 403
+    - [x] Clean verdict $\rightarrow$ forward prompt to downstream model and capture total latency
 
 - [ ] **Day 12: Automated Attack Suite & Adversarial Testing**
   - [ ] Build adversarial test runner in `tests/test_heuristics.py`
