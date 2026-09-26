@@ -99,14 +99,14 @@
 
 ## Phase 5: Visual Dashboard, Packaging & Deliverables (Days 13–15)
 
-- [ ] **Day 13: SOC Analytics Dashboard**
-  - [ ] Build Streamlit SOC dashboard in `dashboard/audit_view.py` querying `data/security_logs.db`
-  - [ ] Implement key metric indicators:
-    - [ ] Total Inspected Prompts
-    - [ ] Blocked Attacks (Count & Percentage)
-    - [ ] PII Scrub Events
-    - [ ] Mean Gateway Latency ($\text{ms}$)
-  - [ ] Render live-updating audit log table with severity-badged rows
+- [x] **Day 13: SOC Analytics Dashboard**
+  - [x] Build Streamlit SOC dashboard in `dashboard/audit_view.py` querying `data/security_logs.db`
+  - [x] Implement key metric indicators:
+    - [x] Total Inspected Prompts
+    - [x] Blocked Attacks (Count & Percentage)
+    - [x] PII Scrub Events
+    - [x] Mean Gateway Latency ($\text{ms}$)
+  - [x] Render live-updating audit log table with severity-badged rows
 
 - [ ] **Day 14: System Hardening & Documentation**
   - [ ] Freeze pinned dependencies to `requirements.txt`
