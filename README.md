@@ -14,32 +14,7 @@ PromptArmor is a production-grade, multi-layered security boundary and reverse p
 
 PromptArmor enforces a **defense-in-depth, 3-layer hybrid inspection pipeline**. Requests are evaluated with sub-millisecond heuristic short-circuiting, followed by token-level boundary data loss prevention (DLP), and deep semantic AI intent classification before reaching downstream target models.
 
-```mermaid
-flowchart TD
-    Client(["🌐 Client Application / User"]) -->|POST /v1/chat| Ingress["🚪 Ingress Ingress API (FastAPI)"]
-    
-    subgraph DefenseBoundary ["🛡️ PromptArmor 3-Layer Security Pipeline"]
-        Ingress --> L1{"⚡ Layer 1: Heuristic Engine<br/>(Regex AST, Length, Blacklist)"}
-        
-        L1 -->|Threat Detected| DropL1["⛔ Drop with HTTP 403<br/>OWASP_LLM01 / LLM08"]
-        L1 -->|Clean Payload| L2["🔒 Layer 2: DLP PII Scrubber<br/>(Email, Phone, SSN, API Keys)"]
-        
-        L2 -->|Tokens Masked| L3{"🤖 Layer 3: Semantic AI Judge<br/>(Groq Safeguard Classifier)"}
-        
-        L3 -->|Jailbreak Detected| DropL3["⛔ Drop with HTTP 403<br/>Adversarial Persona / Override"]
-    end
-    
-    DropL1 -->|Log Telemetry| AuditDB[("💾 SQLite Telemetry Store<br/>security_logs.db")]
-    DropL3 -->|Log Telemetry| AuditDB
-    
-    L3 -->|Verdict: Clean / Sanitized| ProxyDispatcher["🚀 Downstream Dispatcher<br/>(httpx.AsyncClient)"]
-    ProxyDispatcher --> TargetLLM["🧠 Target Foundation Model<br/>(Groq / OpenAI / Custom LLM)"]
-    TargetLLM -->|Model Completion| ProxyDispatcher
-    ProxyDispatcher -->|Record Latency & Masked Prompt| AuditDB
-    ProxyDispatcher -->|HTTP 200 OK Response| Client
-
-    AuditDB -.->|Real-time Ingestion| SOC["📊 SOC Sentinel Mission Control<br/>(Streamlit + Plotly Multi-Tab HUD)"]
-```
+![PromptArmor Defense-in-Depth Architecture](assets/architecture_diagram.png)
 
 ### Defense-in-Depth Breakdown
 
