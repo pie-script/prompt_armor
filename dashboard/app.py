@@ -23,114 +23,270 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Deep Space Cyber Mesh & Glassmorphism Stylesheet
+# Deep Space Cyber Mesh, Neon Glow & Antigravity Stylesheet
 st.markdown(
     """
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Base Canvas & Spatial Atmosphere */
-        .stApp {
-            background-color: #06080e;
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(14, 165, 233, 0.08) 0px, transparent 40%),
-                radial-gradient(at 85% 15%, rgba(244, 63, 94, 0.08) 0px, transparent 40%),
-                radial-gradient(at 50% 85%, rgba(168, 85, 247, 0.06) 0px, transparent 45%),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
-            color: #f1f5f9;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@600;700;900&display=swap');
+
+        /* Complete Streamlit Header Reset - Eliminate stark white artifact */
+        header[data-testid="stHeader"], [data-testid="stHeader"], .stAppHeader {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+        [data-testid="stDecoration"] {
+            background: linear-gradient(90deg, #00f0ff, #7000ff, #ff007a, #00f0ff) !important;
+            background-size: 200% 100% !important;
+            animation: cyberGradient 6s linear infinite !important;
+            height: 3px !important;
+        }
+        @keyframes cyberGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Typography Hierarchy */
-        h1, h2, h3 {
-            font-family: 'Chakra Petch', 'Plus Jakarta Sans', sans-serif !important;
-            letter-spacing: -0.02em;
+        /* Base Canvas & Spatial Atmosphere */
+        .stApp {
+            background-color: #060810 !important;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 45%),
+                radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.12) 0px, transparent 45%),
+                radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.10) 0px, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+            background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px !important;
+            color: #f1f5f9 !important;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+        }
+
+        /* Typography Global Overrides */
+        h1, h2, h3, h4 {
+            font-family: 'Chakra Petch', sans-serif !important;
+            letter-spacing: -0.01em !important;
+            color: #ffffff !important;
+        }
+        p, span, div, label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         code, pre, .stCode, .tabular-mono {
             font-family: 'JetBrains Mono', monospace !important;
             font-variant-numeric: tabular-nums;
         }
 
+        /* Streamlit Native Buttons - Vibrant Cyber Neon Glass */
+        .stButton > button, .stDownloadButton > button {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.22) 0%, rgba(99, 102, 241, 0.28) 100%) !important;
+            color: #38bdf8 !important;
+            border: 1px solid rgba(56, 189, 248, 0.5) !important;
+            border-radius: 10px !important;
+            font-family: 'Chakra Petch', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            letter-spacing: 0.04em !important;
+            padding: 10px 20px !important;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 0 4px 16px -2px rgba(14, 165, 233, 0.3), inset 0 0 12px rgba(56, 189, 248, 0.1) !important;
+            text-transform: uppercase !important;
+        }
+        .stButton > button:hover, .stDownloadButton > button:hover {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.38) 0%, rgba(129, 140, 248, 0.45) 100%) !important;
+            color: #ffffff !important;
+            border-color: #00f0ff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(0, 240, 255, 0.45), inset 0 0 16px rgba(0, 240, 255, 0.2) !important;
+        }
+        .stButton > button:active, .stDownloadButton > button:active {
+            transform: translateY(0px) scale(0.98) !important;
+        }
+
+        /* Streamlit Form Inputs & Dropdowns */
+        div[data-baseweb="input"], div[data-baseweb="textarea"], div[data-baseweb="select"] > div {
+            background-color: rgba(13, 19, 33, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.14) !important;
+            border-radius: 10px !important;
+            color: #f8fafc !important;
+            transition: all 0.25s ease !important;
+        }
+        div[data-baseweb="input"]:focus-within, div[data-baseweb="textarea"]:focus-within, div[data-baseweb="select"] > div:focus-within {
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.35) !important;
+        }
+        input, textarea {
+            color: #f8fafc !important;
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+        label, [data-testid="stWidgetLabel"] {
+            color: #cbd5e1 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            letter-spacing: 0.02em !important;
+        }
+
+        /* Streamlit Tabs Navigation - High Contrast & Glowing Active State */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 12px !important;
+            background: rgba(13, 19, 33, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            padding: 8px !important;
+            border-radius: 14px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            margin-bottom: 24px !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+        }
+        .stTabs [data-baseweb="tab"] {
+            font-family: 'Chakra Petch', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: #94a3b8 !important;
+            border-radius: 10px !important;
+            padding: 10px 22px !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            letter-spacing: 0.03em !important;
+        }
+        .stTabs [data-baseweb="tab"]:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.09) !important;
+            border-color: rgba(56, 189, 248, 0.4) !important;
+            transform: translateY(-1px) !important;
+        }
+        .stTabs [aria-selected="true"] {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.28) 0%, rgba(99, 102, 241, 0.28) 100%) !important;
+            color: #00f0ff !important;
+            border: 1px solid #38bdf8 !important;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35), inset 0 0 14px rgba(56, 189, 248, 0.2) !important;
+        }
+        .stTabs [data-baseweb="tab-highlight"] {
+            background-color: transparent !important;
+        }
+
         /* Top HUD Navigation Bar */
         .hud-header {
-            background: rgba(13, 18, 30, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 18px 24px;
+            background: rgba(13, 18, 32, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 20px 28px;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .hud-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #38bdf8, #818cf8, transparent);
         }
         .hud-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #f8fafc;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             margin: 0;
             letter-spacing: -0.01em;
         }
         .hud-subtitle {
             font-size: 12px;
             color: #94a3b8;
-            margin-top: 4px;
+            margin-top: 6px;
             font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .badge-live-pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #00f5a0;
+            box-shadow: 0 0 10px #00f5a0;
+            animation: radarPulse 1.8s infinite;
+        }
+        @keyframes radarPulse {
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.8); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 245, 160, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0); }
         }
 
-        /* Antigravity Glass Cards with Spatial Hover Lift */
+        /* Dynamic Operational Ticker Bar */
+        .ops-ticker {
+            background: rgba(10, 15, 28, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 8px 16px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #94a3b8;
+        }
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Antigravity Spatial Glass KPI Cards */
         .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 20px;
+            background: rgba(14, 20, 36, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            padding: 22px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                         box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                         border-color 0.3s ease;
         }
         .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 35px -8px rgba(0, 0, 0, 0.5);
-            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.65), 0 0 25px rgba(56, 189, 248, 0.2);
+            border-color: rgba(255, 255, 255, 0.22);
         }
         .glass-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            height: 3px;
         }
 
-        /* Card Variants with Accent Highlighting */
+        /* Card Neon Glowing Accent Lines */
         .card-cyan::before {
-            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+            box-shadow: 0 0 12px #00f0ff;
         }
         .card-rose::before {
-            background: linear-gradient(90deg, transparent, #f43f5e, transparent);
+            background: linear-gradient(90deg, transparent, #ff0055, transparent);
+            box-shadow: 0 0 12px #ff0055;
         }
         .card-amber::before {
-            background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+            background: linear-gradient(90deg, transparent, #ffb800, transparent);
+            box-shadow: 0 0 12px #ffb800;
         }
         .card-purple::before {
             background: linear-gradient(90deg, transparent, #c084fc, transparent);
-        }
-        .card-emerald::before {
-            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            box-shadow: 0 0 12px #c084fc;
         }
 
-        /* KPI Metric Typography */
+        /* KPI Card Typography */
         .kpi-label {
             font-size: 11px;
             font-weight: 700;
@@ -142,124 +298,103 @@ st.markdown(
             justify-content: space-between;
         }
         .kpi-value {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
+            font-family: 'Orbitron', 'Chakra Petch', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
             color: #ffffff;
-            margin: 10px 0 6px 0;
+            margin: 12px 0 8px 0;
             line-height: 1.1;
+            letter-spacing: -0.02em;
         }
         .kpi-subtext {
-            font-size: 11px;
-            color: #64748b;
+            font-size: 11.5px;
+            color: #94a3b8;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* Antigravity Sentinel Radar Pulse */
+        /* Radar Active Pill */
         .radar-ping {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 9999px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            font-size: 11px;
-            font-weight: 600;
-            color: #34d399;
+            background: rgba(0, 245, 160, 0.12);
+            border: 1px solid rgba(0, 245, 160, 0.35);
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #00f5a0;
             font-family: 'JetBrains Mono', monospace;
-        }
-        .radar-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #10b981;
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 10px #10b981;
-        }
-
-        /* Streamlit Tab Custom Styling */
-        .stTabs [data-baseweb="tab-list"] {
-            gap: 8px;
-            background-color: rgba(15, 23, 42, 0.7);
-            padding: 6px 8px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 20px;
-        }
-        .stTabs [data-baseweb="tab"] {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #94a3b8;
-            border-radius: 8px;
-            padding: 8px 18px;
-            background-color: transparent;
-            border: none;
-            transition: all 0.2s ease;
-        }
-        .stTabs [aria-selected="true"] {
-            background-color: rgba(56, 189, 248, 0.15) !important;
-            color: #38bdf8 !important;
-            border: 1px solid rgba(56, 189, 248, 0.3) !important;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 15px rgba(0, 245, 160, 0.15);
         }
 
         /* Verdict Cards for Red-Team Sandbox */
         .verdict-box {
-            border-radius: 12px;
-            padding: 18px 20px;
+            border-radius: 14px;
+            padding: 20px 22px;
             margin-top: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(14, 20, 36, 0.85);
+            backdrop-filter: blur(16px);
         }
         .verdict-allowed {
-            border-color: rgba(16, 185, 129, 0.4);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+            border-color: rgba(0, 245, 160, 0.5) !important;
+            box-shadow: 0 0 25px rgba(0, 245, 160, 0.2) !important;
         }
         .verdict-blocked {
-            border-color: rgba(244, 63, 94, 0.4);
-            box-shadow: 0 0 20px rgba(244, 63, 94, 0.12);
+            border-color: rgba(255, 0, 85, 0.5) !important;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.25) !important;
         }
 
         /* Sidebar Mission Control */
         section[data-testid="stSidebar"] {
-            background-color: rgba(9, 13, 22, 0.95) !important;
+            background-color: rgba(8, 12, 22, 0.96) !important;
             border-right: 1px solid rgba(255, 255, 255, 0.08);
         }
         .policy-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 10px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
             transition: all 0.25s ease;
         }
         .policy-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateX(2px);
         }
         .policy-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 700;
             color: #f8fafc;
         }
         .policy-sub {
             color: #94a3b8;
             font-size: 11px;
-            margin-top: 2px;
+            margin-top: 3px;
         }
         .policy-tag {
             font-size: 10px;
-            font-weight: 700;
-            padding: 2px 7px;
+            font-weight: 800;
+            padding: 2px 8px;
             border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Streamlit DataFrame Container */
+        div[data-testid="stDataFrame"] {
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            background: rgba(10, 15, 28, 0.75) !important;
+            backdrop-filter: blur(14px) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
         }
     </style>
     """,
@@ -276,7 +411,7 @@ GATEWAY_API_URL = "http://127.0.0.1:8000"
 # -----------------------------------------------------------------------------
 # Database Telemetry Ingestion Layer
 # -----------------------------------------------------------------------------
-@st.cache_data(ttl=5)
+@st.cache_data(ttl=3)
 def fetch_audit_data() -> pd.DataFrame:
     try:
         conn = sqlite3.connect(DB_PATH)
@@ -408,11 +543,11 @@ async def run_synthetic_traffic_burst() -> List[Dict[str, any]]:
 with st.sidebar:
     st.markdown(
         """
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <div style="background: linear-gradient(135deg, #38bdf8, #818cf8); padding: 8px; border-radius: 10px; font-size: 20px;">🛡️</div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div style="background: linear-gradient(135deg, #00f0ff, #7000ff); padding: 10px; border-radius: 12px; font-size: 22px; box-shadow: 0 0 20px rgba(0,240,255,0.35);">🛡️</div>
             <div>
-                <div style="font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em;">PromptArmor</div>
-                <div style="font-size: 11px; color: #94a3b8; font-weight: 600;">Autonomous LLM Gateway Sentinel</div>
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.01em;">PromptArmor</div>
+                <div style="font-size: 11px; color: #38bdf8; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Autonomous Sentinel</div>
             </div>
         </div>
         """,
@@ -431,12 +566,12 @@ with st.sidebar:
     if gateway_online:
         st.markdown(
             """
-            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;">
+            <div style="background: rgba(0, 245, 160, 0.1); border: 1px solid rgba(0, 245, 160, 0.35); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; box-shadow: 0 0 15px rgba(0, 245, 160, 0.1);">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="color: #34d399; font-weight: 700; font-size: 12px;">INGRESS PROXY</span>
-                    <span style="background: #10b981; color: #022c22; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 4px;">ONLINE</span>
+                    <span style="color: #00f5a0; font-weight: 800; font-size: 12px; letter-spacing: 0.05em;">INGRESS PROXY</span>
+                    <span style="background: #00f5a0; color: #022c22; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 5px;">ONLINE</span>
                 </div>
-                <div style="color: #94a3b8; font-size: 11px; margin-top: 4px; font-family: monospace;">127.0.0.1:8000 (Active)</div>
+                <div style="color: #cbd5e1; font-size: 11px; margin-top: 5px; font-family: 'JetBrains Mono', monospace;">127.0.0.1:8000 (Active)</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -444,20 +579,20 @@ with st.sidebar:
     else:
         st.markdown(
             """
-            <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;">
+            <div style="background: rgba(255, 0, 85, 0.1); border: 1px solid rgba(255, 0, 85, 0.35); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.1);">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="color: #fb7185; font-weight: 700; font-size: 12px;">INGRESS PROXY</span>
-                    <span style="background: #f43f5e; color: #fff; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 4px;">OFFLINE</span>
+                    <span style="color: #ff0055; font-weight: 800; font-size: 12px; letter-spacing: 0.05em;">INGRESS PROXY</span>
+                    <span style="background: #ff0055; color: #fff; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 5px;">OFFLINE</span>
                 </div>
-                <div style="color: #94a3b8; font-size: 11px; margin-top: 4px; font-family: monospace;">Start via: uvicorn app.main:app</div>
+                <div style="color: #94a3b8; font-size: 11px; margin-top: 5px; font-family: 'JetBrains Mono', monospace;">Start via: uvicorn app.main:app</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    # Day 14: Synthetic Traffic Generator Button
+    # Traffic Simulation Button
     st.markdown(
-        "<div style='font-size: 11px; font-weight: 700; color: #64748b; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;'>Traffic Simulation</div>",
+        "<div style='font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;'>Traffic Simulation Engine</div>",
         unsafe_allow_html=True,
     )
     if st.button("⚡ Inject Synthetic Traffic Burst", use_container_width=True, disabled=not gateway_online):
@@ -469,15 +604,15 @@ with st.sidebar:
                 allowed_sim = sum(1 for r in results if r.get("status_code") == 200)
                 st.success(f"🚀 Dispatched {success_count} payloads: {allowed_sim} Allowed, {blocked_sim} Blocked")
                 st.cache_data.clear()
-                time.sleep(0.5)
+                time.sleep(0.4)
                 st.rerun()
             except Exception as burst_err:
                 st.error(f"Traffic burst failed: {burst_err}")
 
-    st.markdown("---")
+    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
     st.markdown(
-        "<div style='font-size: 11px; font-weight: 700; color: #64748b; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;'>Active Defense Matrix</div>",
+        "<div style='font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;'>Active Defense Matrix</div>",
         unsafe_allow_html=True,
     )
     st.markdown(
@@ -485,28 +620,29 @@ with st.sidebar:
         <div class="policy-card">
             <div class="policy-header">
                 <span>⚡ Layer 1: Heuristics</span>
-                <span class="policy-tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">0 ms</span>
+                <span class="policy-tag" style="background: rgba(0, 240, 255, 0.15); color: #00f0ff;">0 ms</span>
             </div>
-            <div class="policy-sub">Regex & Keyword AST Drop</div>
+            <div class="policy-sub">Regex & Keyword AST Fast Drop</div>
         </div>
         <div class="policy-card">
             <div class="policy-header">
                 <span>🔒 Layer 2: PII Scrubber</span>
-                <span class="policy-tag" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">DLP Mask</span>
+                <span class="policy-tag" style="background: rgba(255, 184, 0, 0.15); color: #ffb800;">DLP Mask</span>
             </div>
-            <div class="policy-sub">API Keys, SSN, Email Redaction</div>
+            <div class="policy-sub">API Keys, SSN, Secrets Masking</div>
         </div>
         <div class="policy-card">
             <div class="policy-header">
                 <span>🤖 Layer 3: AI Judge</span>
-                <span class="policy-tag" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;">Groq Guard</span>
+                <span class="policy-tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">Groq Guard</span>
             </div>
             <div class="policy-sub">OWASP LLM01/LLM08 Classifier</div>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.markdown("---")
+
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
     if st.button("🔄 Refresh Telemetry Stream", use_container_width=True):
         st.cache_data.clear()
@@ -519,14 +655,21 @@ st.markdown(
     f"""
     <div class="hud-header">
         <div>
-            <h1 class="hud-title">🛡️ PromptArmor Sentinel Mission Control</h1>
-            <div class="hud-subtitle">Autonomous LLM Security Gateway • OWASP LLM Top 10 Mitigation Engine</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="radar-ping">
-                <span class="radar-dot"></span> Sentinel Active
+            <h1 class="hud-title">
+                <span style="font-size: 28px;">🛡️</span> PromptArmor Sentinel Mission Control
+            </h1>
+            <div class="hud-subtitle">
+                <span class="badge-live-pulse"></span>
+                <span>AUTONOMOUS LLM SECURITY GATEWAY</span>
+                <span>•</span>
+                <span style="color: #38bdf8;">OWASP LLM TOP 10 MITIGATION ENGINE</span>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #94a3b8;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+            <div class="radar-ping">
+                <span class="badge-live-pulse"></span> SENTINEL ACTIVE
+            </div>
+            <div style="background: rgba(14, 20, 36, 0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #cbd5e1; box-shadow: 0 0 15px rgba(0,0,0,0.4);">
                 UTC {datetime.now(timezone.utc).strftime('%H:%M:%S')}
             </div>
         </div>
@@ -535,8 +678,21 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Operational Live Status Ticker
+st.markdown(
+    """
+    <div class="ops-ticker">
+        <div class="ticker-item"><span style="color: #00f5a0;">●</span> <span>SHIELD STATUS: <b>FULLY ARMED</b></span></div>
+        <div class="ticker-item"><span style="color: #38bdf8;">⚡</span> <span>LAYER 1 LATENCY: <b>&lt; 0.5 ms</b></span></div>
+        <div class="ticker-item"><span style="color: #ffb800;">🔒</span> <span>DLP BOUNDARY: <b>ZERO-EXPOSURE</b></span></div>
+        <div class="ticker-item"><span style="color: #c084fc;">🤖</span> <span>LLM JUDGE: <b>GROQ LLAMA-3.3-70B</b></span></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 # -----------------------------------------------------------------------------
-# Multi-Tab Dashboard Navigation (Day 14 Architecture)
+# Multi-Tab Dashboard Navigation (High Contrast & Cyber Glass)
 # -----------------------------------------------------------------------------
 tab_soc, tab_sandbox, tab_forensics = st.tabs(
     [
@@ -555,7 +711,7 @@ df = fetch_audit_data()
 # =============================================================================
 with tab_soc:
     if df.empty:
-        st.warning("⚠️ No security audit records detected. Click **⚡ Inject Synthetic Traffic Burst** in the sidebar to populate live data.")
+        st.warning("⚠️ No security audit records detected. Click **⚡ Inject Synthetic Traffic Burst** in the sidebar to populate live telemetry.")
     else:
         total_events = len(df)
         blocked_events = len(df[df["decision"] == "BLOCKED"])
@@ -569,7 +725,7 @@ with tab_soc:
             ]
         )
 
-        # 4 Antigravity Floating KPI Cards
+        # 4 Antigravity Floating Spatial KPI Cards
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
         with kpi1:
@@ -578,11 +734,13 @@ with tab_soc:
                 <div class="glass-card card-cyan">
                     <div class="kpi-label">
                         <span>Total Ingress Prompts</span>
-                        <span style="font-size: 14px;">📡</span>
+                        <span style="font-size: 16px;">📡</span>
                     </div>
-                    <div class="kpi-value">{total_events:,}</div>
+                    <div class="kpi-value" style="background: linear-gradient(135deg, #00f0ff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {total_events:,}
+                    </div>
                     <div class="kpi-subtext">
-                        <span style="color: #38bdf8;">●</span> Production & Red-Team Traffic
+                        <span style="color: #00f0ff;">●</span> Production & Red-Team Traffic
                     </div>
                 </div>
                 """,
@@ -595,11 +753,13 @@ with tab_soc:
                 <div class="glass-card card-rose">
                     <div class="kpi-label">
                         <span>Blocked Injections</span>
-                        <span style="font-size: 14px;">⛔</span>
+                        <span style="font-size: 16px;">⛔</span>
                     </div>
-                    <div class="kpi-value" style="color: #fb7185;">{blocked_events:,}</div>
+                    <div class="kpi-value" style="background: linear-gradient(135deg, #ff0055, #fb7185); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {blocked_events:,}
+                    </div>
                     <div class="kpi-subtext">
-                        <span style="color: #f43f5e; font-weight: 700;">{block_rate:.1f}%</span> Interception Rate
+                        <span style="color: #ff0055; font-weight: 800;">{block_rate:.1f}%</span> Interception Rate
                     </div>
                 </div>
                 """,
@@ -612,11 +772,13 @@ with tab_soc:
                 <div class="glass-card card-amber">
                     <div class="kpi-label">
                         <span>DLP PII Scrubbed</span>
-                        <span style="font-size: 14px;">🔒</span>
+                        <span style="font-size: 16px;">🔒</span>
                     </div>
-                    <div class="kpi-value" style="color: #fbbf24;">{pii_scrubbed_count:,}</div>
+                    <div class="kpi-value" style="background: linear-gradient(135deg, #ffb800, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {pii_scrubbed_count:,}
+                    </div>
                     <div class="kpi-subtext">
-                        <span style="color: #f59e0b;">●</span> In-Place Token Redaction
+                        <span style="color: #ffb800;">●</span> In-Place Token Redaction
                     </div>
                 </div>
                 """,
@@ -629,11 +791,13 @@ with tab_soc:
                 <div class="glass-card card-purple">
                     <div class="kpi-label">
                         <span>Mean Roundtrip Latency</span>
-                        <span style="font-size: 14px;">⚡</span>
+                        <span style="font-size: 16px;">⚡</span>
                     </div>
-                    <div class="kpi-value" style="color: #c084fc;">{avg_latency:.1f}<span style="font-size: 16px; font-weight: 500; color: #94a3b8;"> ms</span></div>
+                    <div class="kpi-value" style="background: linear-gradient(135deg, #c084fc, #e879f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {avg_latency:.1f}<span style="font-size: 16px; font-weight: 600; color: #cbd5e1;"> ms</span>
+                    </div>
                     <div class="kpi-subtext">
-                        <span style="color: #a855f7;">●</span> Sub-ms L1, ~20ms L3
+                        <span style="color: #c084fc;">●</span> Sub-ms L1, ~20ms L3
                     </div>
                 </div>
                 """,
@@ -648,8 +812,8 @@ with tab_soc:
         with c_chart1:
             st.markdown(
                 """
-                <div style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                    <span>🍩 Policy Decision Breakdown</span>
+                <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #00f0ff;">🍩</span> <span>Policy Decision Breakdown</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -665,35 +829,36 @@ with tab_soc:
                         hole=0.68,
                         marker=dict(
                             colors=[
-                                "#10b981" if d == "ALLOWED" else "#f43f5e"
+                                "#00f5a0" if d == "ALLOWED" else "#ff0055"
                                 for d in decision_counts["Decision"]
                             ],
-                            line=dict(color="#06080e", width=2),
+                            line=dict(color="#060810", width=3),
                         ),
                         textinfo="percent",
                         hoverinfo="label+value+percent",
+                        textfont=dict(size=13, family="Chakra Petch", color="#ffffff"),
                     )
                 ]
             )
             fig_donut.add_annotation(
-                text=f"<b>{total_events}</b><br><span style='font-size: 11px; color: #94a3b8;'>REQUESTS</span>",
+                text=f"<b style='font-size:24px; color:#ffffff;'>{total_events}</b><br><span style='font-size:11px; color:#38bdf8; font-weight:bold; letter-spacing:1px;'>REQUESTS</span>",
                 x=0.5,
                 y=0.5,
-                font=dict(size=18, family="Chakra Petch", color="#ffffff"),
+                font=dict(family="Orbitron, Chakra Petch", color="#ffffff"),
                 showarrow=False,
             )
             fig_donut.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 margin=dict(t=10, b=10, l=10, r=10),
-                height=260,
+                height=270,
                 legend=dict(
                     orientation="h",
                     yanchor="bottom",
                     y=-0.15,
                     xanchor="center",
                     x=0.5,
-                    font=dict(color="#94a3b8", size=11),
+                    font=dict(color="#cbd5e1", size=12, family="Plus Jakarta Sans"),
                 ),
             )
             st.plotly_chart(fig_donut, use_container_width=True)
@@ -701,8 +866,8 @@ with tab_soc:
         with c_chart2:
             st.markdown(
                 """
-                <div style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                    <span>📊 Intercepted Threat Categories</span>
+                <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #ff0055;">📊</span> <span>Intercepted Threat Categories</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -719,35 +884,40 @@ with tab_soc:
                     y="Threat Category",
                     orientation="h",
                     color="Threat Category",
-                    color_discrete_sequence=["#f43f5e", "#fb7185", "#e11d48", "#be123c"],
+                    color_discrete_sequence=["#ff0055", "#ff3366", "#f43f5e", "#fb7185", "#fda4af"],
                 )
                 fig_bar.update_layout(
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     margin=dict(t=10, b=10, l=10, r=10),
-                    height=260,
+                    height=270,
                     showlegend=False,
                     xaxis=dict(
                         showgrid=True,
-                        gridcolor="rgba(255,255,255,0.05)",
-                        tickfont=dict(color="#94a3b8"),
+                        gridcolor="rgba(255,255,255,0.08)",
+                        tickfont=dict(color="#cbd5e1", size=11),
+                        title=dict(text="Total Interceptions", font=dict(color="#94a3b8", size=11)),
                     ),
                     yaxis=dict(
-                        tickfont=dict(color="#f1f5f9", family="JetBrains Mono"),
+                        tickfont=dict(color="#f8fafc", family="JetBrains Mono", size=11),
                         autorange="reversed",
+                        title=None,
                     ),
+                )
+                fig_bar.update_traces(
+                    marker=dict(line=dict(color="rgba(255, 255, 255, 0.25)", width=1)),
                 )
                 st.plotly_chart(fig_bar, use_container_width=True)
             else:
                 st.info("No threats blocked in current telemetry log window.")
 
-        st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
-        # Audit Telemetry Table
+        # Audit Telemetry Table Section
         st.markdown(
             """
-            <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                <span>📋 Live Ingress Audit Stream</span>
+            <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="color: #38bdf8;">📋</span> <span>Live Ingress Audit Telemetry Stream</span>
             </div>
             """,
             unsafe_allow_html=True,
@@ -790,10 +960,10 @@ with tab_soc:
 with tab_sandbox:
     st.markdown(
         """
-        <div style="margin-bottom: 18px;">
-            <div style="font-size: 18px; font-weight: 700; color: #f8fafc;">Live Red-Team Testing Surface</div>
-            <div style="font-size: 12px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">
-                Target Ingress Endpoint: <span style="color: #38bdf8;">POST http://127.0.0.1:8000/v1/chat</span>
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 20px; font-weight: 800; color: #f8fafc; font-family: 'Chakra Petch', sans-serif;">Live Red-Team Testing Surface</div>
+            <div style="font-size: 12px; color: #94a3b8; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+                Target Ingress Endpoint: <span style="color: #00f0ff; font-weight: 700;">POST http://127.0.0.1:8000/v1/chat</span>
             </div>
         </div>
         """,
@@ -880,8 +1050,8 @@ with tab_sandbox:
     with sb_col2:
         st.markdown(
             """
-            <div style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px;">
-                Boundary Security Verdict Card
+            <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                <span style="color: #00f0ff;">🛡️</span> <span>Boundary Security Verdict Card</span>
             </div>
             """,
             unsafe_allow_html=True,
@@ -912,28 +1082,28 @@ with tab_sandbox:
                             st.markdown(
                                 f"""
                                 <div class="verdict-box verdict-allowed">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-weight: 800; font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.4);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                                        <span style="background: rgba(0, 245, 160, 0.2); color: #00f5a0; font-weight: 900; font-size: 13px; padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(0, 245, 160, 0.5); font-family: 'JetBrains Mono', monospace;">
                                             HTTP 200 ALLOWED
                                         </span>
-                                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #94a3b8;">
+                                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #cbd5e1; font-weight: 600;">
                                             ⏱️ {gateway_latency:.2f} ms
                                         </span>
                                     </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">
-                                        <b>Boundary Action:</b> <span style="color: {'#fbbf24' if has_redaction else '#34d399'};">
+                                    <div style="font-size: 12.5px; color: #cbd5e1; margin-bottom: 10px;">
+                                        <b>Boundary Action:</b> <span style="color: {'#ffb800' if has_redaction else '#00f5a0'}; font-weight: 700;">
                                             {'PII Scrubbed & Dispatched' if has_redaction else 'Safe Pass-Through to Model'}
                                         </span>
                                     </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Sanitized Prompt:</div>
-                                        <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #38bdf8; word-break: break-all;">
+                                    <div style="margin-bottom: 12px;">
+                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Sanitized Prompt:</div>
+                                        <div style="background: rgba(6, 8, 16, 0.8); border: 1px solid rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #38bdf8; word-break: break-all;">
                                             {sanitized}
                                         </div>
                                     </div>
                                     <div>
-                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Downstream Model Response:</div>
-                                        <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; font-size: 12px; color: #e2e8f0; max-height: 140px; overflow-y: auto;">
+                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Downstream Model Response:</div>
+                                        <div style="background: rgba(6, 8, 16, 0.8); border: 1px solid rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 8px; font-size: 12.5px; color: #e2e8f0; max-height: 150px; overflow-y: auto; line-height: 1.5;">
                                             {model_resp}
                                         </div>
                                     </div>
@@ -950,27 +1120,27 @@ with tab_sandbox:
                             st.markdown(
                                 f"""
                                 <div class="verdict-box verdict-blocked">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                        <span style="background: rgba(244, 63, 94, 0.2); color: #fb7185; font-weight: 800; font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(244, 63, 94, 0.4);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                                        <span style="background: rgba(255, 0, 85, 0.2); color: #ff0055; font-weight: 900; font-size: 13px; padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(255, 0, 85, 0.5); font-family: 'JetBrains Mono', monospace;">
                                             HTTP 403 BLOCKED
                                         </span>
-                                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #94a3b8;">
+                                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #cbd5e1; font-weight: 600;">
                                             ⏱️ {elapsed_ms:.2f} ms
                                         </span>
                                     </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">
-                                        <b>Threat Category:</b> <span style="color: #fb7185; font-family: 'JetBrains Mono'; font-weight: 700;">{threat_cat}</span>
+                                    <div style="font-size: 12.5px; color: #cbd5e1; margin-bottom: 8px;">
+                                        <b>Threat Category:</b> <span style="color: #ff0055; font-family: 'JetBrains Mono'; font-weight: 800;">{threat_cat}</span>
                                     </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">
-                                        <b>Forensic Trigger:</b> <span style="color: #f1f5f9;">{rule_trig}</span>
+                                    <div style="font-size: 12.5px; color: #cbd5e1; margin-bottom: 8px;">
+                                        <b>Forensic Trigger:</b> <span style="color: #ffffff; font-weight: 600;">{rule_trig}</span>
                                     </div>
-                                    <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 10px;">
-                                        <b>Confidence Score:</b> <span style="color: #fb7185; font-weight: 700;">{conf * 100:.1f}%</span>
+                                    <div style="font-size: 12.5px; color: #cbd5e1; margin-bottom: 12px;">
+                                        <b>Confidence Score:</b> <span style="color: #ff0055; font-weight: 800;">{conf * 100:.1f}%</span>
                                     </div>
                                     <div>
-                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Sentinel Interception Status:</div>
-                                        <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #f43f5e;">
-                                            [DROPPED AT BOUNDARY] - Upstream model shielded from malicious context.
+                                        <div style="font-size: 11px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Sentinel Interception Status:</div>
+                                        <div style="background: rgba(255, 0, 85, 0.1); border: 1px solid rgba(255, 0, 85, 0.3); padding: 10px 14px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #ff0055; font-weight: 700;">
+                                            ⛔ [DROPPED AT BOUNDARY] - Upstream model shielded from malicious context.
                                         </div>
                                     </div>
                                 </div>
@@ -992,9 +1162,9 @@ with tab_sandbox:
 with tab_forensics:
     st.markdown(
         """
-        <div style="margin-bottom: 18px;">
-            <div style="font-size: 18px; font-weight: 700; color: #f8fafc;">Enterprise Compliance & Forensics Export</div>
-            <div style="font-size: 12px; color: #94a3b8;">
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 20px; font-weight: 800; color: #f8fafc; font-family: 'Chakra Petch', sans-serif;">Enterprise Compliance & Forensics Export</div>
+            <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">
                 Cryptographically hashed audit packages for SOC2, ISO 27001, and NIST AI RMF compliance reporting.
             </div>
         </div>
@@ -1046,18 +1216,18 @@ with tab_forensics:
         # Forensics Package Integrity Card
         st.markdown(
             f"""
-            <div class="glass-card" style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span style="font-size: 13px; font-weight: 700; color: #38bdf8;">FORENSIC INTEGRITY CHAIN OF CUSTODY</span>
-                    <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-family: monospace;">SHA-256 VERIFIED</span>
+            <div class="glass-card" style="margin-bottom: 22px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-size: 14px; font-weight: 800; color: #00f0ff; letter-spacing: 0.05em;">FORENSIC INTEGRITY CHAIN OF CUSTODY</span>
+                    <span style="background: rgba(0, 240, 255, 0.15); color: #00f0ff; font-size: 11px; padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 800; border: 1px solid rgba(0, 240, 255, 0.3);">SHA-256 VERIFIED</span>
                 </div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #94a3b8; word-break: break-all; margin-bottom: 8px;">
-                    <b>Dataset Hash:</b> <span style="color: #f1f5f9;">{sha256_hash}</span>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #94a3b8; word-break: break-all; margin-bottom: 10px;">
+                    <b>Dataset Hash:</b> <span style="color: #ffffff; font-weight: 600;">{sha256_hash}</span>
                 </div>
-                <div style="font-size: 11px; color: #64748b; display: flex; gap: 20px;">
-                    <span><b>Records in Package:</b> {len(filtered_df)}</span>
-                    <span><b>Timestamp:</b> {timestamp_utc}</span>
-                    <span><b>Standard:</b> NIST AI RMF / OWASP LLM Top 10</span>
+                <div style="font-size: 11.5px; color: #cbd5e1; display: flex; gap: 24px;">
+                    <span><b>Records in Package:</b> <span style="color: #00f0ff;">{len(filtered_df)}</span></span>
+                    <span><b>Timestamp:</b> <span style="color: #cbd5e1;">{timestamp_utc}</span></span>
+                    <span><b>Standard:</b> <span style="color: #a855f7;">NIST AI RMF / OWASP LLM Top 10</span></span>
                 </div>
             </div>
             """,
@@ -1083,5 +1253,5 @@ with tab_forensics:
                 use_container_width=True,
             )
 
-        st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
         st.dataframe(filtered_df, use_container_width=True, hide_index=True)

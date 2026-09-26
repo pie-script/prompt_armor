@@ -130,8 +130,8 @@
     - [x] Setup and local launch instructions for FastAPI and Streamlit
     - [x] Sample `curl` interactions showing HTTP 200 vs HTTP 403 responses
 
-- [ ] **Day 15: Final Verification & Portfolio Artifacts**
-  - [ ] Perform fresh end-to-end run: database init, FastAPI boot, Streamlit launch, and payload execution
-  - [ ] Capture CLI output screenshot showcasing intercepted HTTP 403 injection attempts
-  - [ ] Capture Streamlit dashboard screenshot displaying SOC audit analytics
-  - [ ] Commit all code, push clean repository to GitHub, and create release tag
+- [x] **Day 15: Final Verification & Portfolio Artifacts**
+  - [x] Perform fresh end-to-end run: database init, FastAPI boot, Streamlit launch, and payload execution
+  - [x] Capture CLI output screenshot showcasing intercepted HTTP 403 injection attempts
+  - [x] Capture Streamlit dashboard screenshot displaying SOC audit analytics
+  - [x] Commit all code, push clean repository to GitHub, and create release tag

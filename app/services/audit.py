@@ -1,30 +1,34 @@
-from app.models.database import SessionLocal, AuditEvent
-from sqlalchemy.orm import Session
+from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
-from datetime import datetime
+from sqlalchemy.orm import Session
+
+from app.models.database import AuditEvent, SessionLocal
+
 
 class AuditEventResponse(BaseModel):
-    id:int
-    timestamp:datetime
-    client_ip:Optional[str]
-    user_id:Optional[str]
-    raw_prompt:str
-    sanitized_prompt:str
-    decision:str
-    threat_category:str
-    confidence_score:float
-    rule_triggered:Optional[str]
-    latency_ms:float
-    model_config={"from_attributes":True}
+    id: int
+    timestamp: datetime
+    client_ip: Optional[str]
+    user_id: Optional[str]
+    raw_prompt: str
+    sanitized_prompt: str
+    decision: str
+    threat_category: str
+    confidence_score: float
+    rule_triggered: Optional[str]
+    latency_ms: float
 
-def get_db() :
+    model_config = {"from_attributes": True}
 
-    db=SessionLocal()
-    try :
+
+def get_db():
+    db = SessionLocal()
+    try:
         yield db
     finally:
         db.close()
+
 
 def log_audit_event(
     raw_prompt: str,
@@ -66,25 +70,26 @@ def log_audit_event(
         if owns_session:
             db.close()
 
+
 def get_audit_logs(
-    db:Session,
-    skip : int=0,
-    limit: int=50,
-    decision: Optional[str] =None
+    db: Session,
+    skip: int = 0,
+    limit: int = 50,
+    decision: Optional[str] = None,
 ):
-    query=db.query(AuditEvent)
+    query = db.query(AuditEvent)
     if decision:
-        query=query.filter(AuditEvent.decision==decision)
-    logs=query.order_by(AuditEvent.timestamp.desc()).offset(skip).limit(limit).all()
+        query = query.filter(AuditEvent.decision == decision)
+    logs = query.order_by(AuditEvent.timestamp.desc()).offset(skip).limit(limit).all()
     return logs
 
-def get_audit_stats(db: Session):
-    total=db.query(AuditEvent).count()
-    blocked=db.query(AuditEvent).filter(AuditEvent.decision=="BLOCKED").count()
-    allowed=total-blocked
-    return {
-        "total_prompts":total,
-        "allowed_prompts":allowed,
-        "blocked_prompts":blocked
-    } 
 
+def get_audit_stats(db: Session):
+    total = db.query(AuditEvent).count()
+    blocked = db.query(AuditEvent).filter(AuditEvent.decision == "BLOCKED").count()
+    allowed = total - blocked
+    return {
+        "total_prompts": total,
+        "allowed_prompts": allowed,
+        "blocked_prompts": blocked,
+    }

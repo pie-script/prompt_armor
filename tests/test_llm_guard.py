@@ -1,9 +1,11 @@
 """
-Day 10 Verification Tests - LLM Semantic Judge
-Run with: python -m app.security.test_llm_guard
+tests/test_llm_guard.py -- LLM Semantic Judge Verification Suite (Day 10)
+Run with: python -m pytest tests/test_llm_guard.py -v
+     or:  python -m tests.test_llm_guard
 """
 
 import asyncio
+import pytest
 from app.security.llm_guard import evaluate_prompt_semantic, LLMGuardVerdict
 
 PASS = "[PASS]"
@@ -24,6 +26,7 @@ def run_test(name, coro_fn):
 # -------------------------------------------------
 # Test 1: Benign Prompt -- should be clean
 # -------------------------------------------------
+@pytest.mark.asyncio
 async def test_benign_prompt():
     print("\n--- Test 1: Benign Prompt ---")
     verdict = await evaluate_prompt_semantic("Explain the difference between TCP and UDP.")
@@ -40,6 +43,7 @@ async def test_benign_prompt():
 # Test 2: Subtle Roleplay / Stealth Injection
 # (designed to bypass static regex scanners)
 # -------------------------------------------------
+@pytest.mark.asyncio
 async def test_stealth_roleplay_injection():
     print("\n--- Test 2: Subtle Roleplay / Indirect Injection ---")
     stealth_attack = (
@@ -59,6 +63,7 @@ async def test_stealth_roleplay_injection():
 # -------------------------------------------------
 # Test 3: Type Verification -- all 4 fields present
 # -------------------------------------------------
+@pytest.mark.asyncio
 async def test_type_verification():
     print("\n--- Test 3: Strict Type Verification ---")
     verdict = await evaluate_prompt_semantic("What is a firewall?")
