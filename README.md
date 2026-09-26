@@ -105,6 +105,16 @@ dashboard/
 4. **⚡ Synthetic Traffic Burst Generator (Sidebar):**
    * Uses `httpx.AsyncClient` to asynchronously fire 10 concurrent mixed payloads (Benign, PII, and Injection attacks) to populate charts and test the gateway under load in one click.
 
+### Dashboard Showcase
+
+| 📊 SOC Operations Center | 🎯 Live Red-Team Testing Sandbox |
+| :---: | :---: |
+| ![SOC Operations Center](assets/soc_operations_center.png) | ![Red-Team Sandbox](assets/redteam_sandbox_tab.png) |
+
+| 📋 Live Ingress Audit Stream & Triage Table |
+| :---: |
+| ![Audit Log Table](assets/audit_log_table.png) |
+
 ---
 
 ## 🛠️ Quickstart & Setup Guide
