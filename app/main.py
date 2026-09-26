@@ -145,7 +145,7 @@ async def inspect_chat(
 
 
 @app.get("/v1/audit/logs", response_model=List[AuditEventResponse])
-def lists_events(
+def list_events(
     skip: int = 0,
     limit: int = 50,
     decision: Optional[str] = None,
