@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 import time
 from typing import List, Optional
 from app.config import settings
@@ -62,7 +62,7 @@ async def inspect_chat(
             threat_category=heuristic_res["threat_category"],
             rule_triggered=heuristic_res["rule_triggered"],
             confidence_score=heuristic_res["confidence_score"],
-            timestamp=datetime.utcnow(),
+            timestamp=datetime.now(timezone.utc),
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -107,7 +107,7 @@ async def inspect_chat(
             threat_category=verdict.risk_category,
             rule_triggered=verdict.reasoning,
             confidence_score=verdict.risk_score,
-            timestamp=datetime.utcnow(),
+            timestamp=datetime.now(timezone.utc),
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

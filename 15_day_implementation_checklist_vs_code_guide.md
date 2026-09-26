@@ -108,14 +108,27 @@
     - [x] Mean Gateway Latency ($\text{ms}$)
   - [x] Render live-updating audit log table with severity-badged rows
 
-- [ ] **Day 14: System Hardening & Documentation**
-  - [ ] Freeze pinned dependencies to `requirements.txt`
-  - [ ] Provide `.env.example` with setup placeholders (`GEMINI_API_KEY`, `GATEWAY_HOST`, `GATEWAY_PORT`)
-  - [ ] Write `README.md` following AppSec industry guidelines:
-    - [ ] Threat model & OWASP Top 10 for LLM coverage (LLM01, LLM02, LLM08)
-    - [ ] Architecture and request pipeline flow diagram
-    - [ ] Setup and local launch instructions for FastAPI and Streamlit
-    - [ ] Sample `curl` interactions showing HTTP 200 vs HTTP 403 responses
+- [x] **Day 14: Multi-Tab Mission Control, Red-Team Sandbox & System Hardening**
+  - [x] Implement Multi-Tab Dashboard Navigation using `st.tabs`:
+    - [x] 📊 SOC Operations Center (metrics, donut chart, threat distribution, and live audit stream)
+    - [x] 🎯 Red-Team Testing Sandbox (live prompt dispatcher to `http://127.0.0.1:8000/v1/chat`)
+    - [x] 📑 Forensics Export (compliance data download in CSV & JSON with SHA-256 integrity hash)
+  - [x] Build Live Red-Team Testing Sandbox with OWASP Top 10 attack library:
+    - [x] Layer 1: Static prompt injection & direct system prompt extraction
+    - [x] Layer 2: Credential and PII exposure (API keys, emails, SSN)
+    - [x] Layer 3: Nuanced fictional roleplay jailbreaks (DAN, hypothetical thriller)
+    - [x] Benign: Safe enterprise pass-through queries
+    - [x] Render side-by-side verdict cards showing HTTP status (200 vs 403), latency ms, sanitized prompt, model output, and rule triggers
+  - [x] Implement Synthetic Traffic Generator:
+    - [x] Sidebar `⚡ Inject Synthetic Traffic Burst` button using `httpx.AsyncClient`
+    - [x] Concurrent dispatch of 10 mixed payloads (Benign, PII, Injections) for one-click telemetry population
+  - [x] Freeze pinned dependencies to `requirements.txt`
+  - [x] Provide synced `.env.example` with documented configuration placeholders
+  - [x] Write enterprise AppSec `README.md`:
+    - [x] Threat model & OWASP Top 10 for LLM coverage (LLM01, LLM02, LLM08)
+    - [x] Architecture and request pipeline flow diagram (Mermaid)
+    - [x] Setup and local launch instructions for FastAPI and Streamlit
+    - [x] Sample `curl` interactions showing HTTP 200 vs HTTP 403 responses
 
 - [ ] **Day 15: Final Verification & Portfolio Artifacts**
   - [ ] Perform fresh end-to-end run: database init, FastAPI boot, Streamlit launch, and payload execution

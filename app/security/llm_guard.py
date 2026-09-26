@@ -49,6 +49,7 @@ async def evaluate_prompt_semantic(prompt: str) -> LLMGuardVerdict:
             ],
             response_format={"type": "json_object"},
             temperature=0.0,
+            timeout=15.0,
         )
 
         raw_json = response.choices[0].message.content or "{}"
