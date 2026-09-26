@@ -14,7 +14,7 @@ PromptArmor is a production-grade, multi-layered security boundary and reverse p
 
 PromptArmor enforces a **defense-in-depth, 3-layer hybrid inspection pipeline**. Requests are evaluated with sub-millisecond heuristic short-circuiting, followed by token-level boundary data loss prevention (DLP), and deep semantic AI intent classification before reaching downstream target models.
 
-![PromptArmor Defense-in-Depth Architecture](assets/architecture_diagram.png)
+![PromptArmor Defense-in-Depth Architecture](assets/flowchart-diagram.png)
 
 ### Defense-in-Depth Breakdown
 
