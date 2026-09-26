@@ -56,8 +56,7 @@ The integrated Streamlit SOC Operations Center provides a futuristic, Antigravit
 
 ```
 dashboard/
-├── app.py          # Unified multi-tab Streamlit dashboard
-└── audit_view.py   # Hot-reload compatible entry point
+└── app.py          # Unified multi-tab Streamlit SOC dashboard
 ```
 
 ### Tab Navigation
