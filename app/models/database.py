@@ -1,7 +1,6 @@
-# SQLAlchemy imports: engine, column types, and ORM tools 
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Float, Text
 from sqlalchemy.orm import sessionmaker, declarative_base
-from datetime import datetime
+from datetime import datetime, timezone
 
 # 1. DATABASE URL 
 # Points SQLite to the data/ folder at project root
@@ -39,7 +38,7 @@ class AuditEvent(Base):
     id        = Column(Integer, primary_key=True, autoincrement=True)
 
     # When the event was recorded — indexed for fast time-range queries
-    timestamp = Column(DateTime, default=datetime.utcnow, index=True)
+    timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc), index=True)
 
     # Source identity (both nullable — not always available)
     client_ip = Column(String, nullable=True)   # IP address of the caller

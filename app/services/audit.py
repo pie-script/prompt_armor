@@ -27,22 +27,22 @@ def get_db() :
         db.close()
 
 def log_audit_event(
-    raw_prompt:str,
-    sanitized_prompt:str,
-    decision:str,
-    threat_category:str,
-    confidence_score:float,
-    rule_triggered:str,
-    latency_ms:float,
-    client_ip:str=None,
-    user_id:str=None,
-    db: Session =None
+    raw_prompt: str,
+    sanitized_prompt: str,
+    decision: str,
+    threat_category: str,
+    confidence_score: float,
+    rule_triggered: Optional[str],
+    latency_ms: float,
+    client_ip: Optional[str] = None,
+    user_id: Optional[str] = None,
+    db: Optional[Session] = None,
 ):
-    owns_session=db is None
+    owns_session = db is None
     if owns_session:
-        db=SessionLocal()
+        db = SessionLocal()
     try:
-        event=AuditEvent(
+        event = AuditEvent(
             raw_prompt=raw_prompt,
             sanitized_prompt=sanitized_prompt,
             decision=decision,
@@ -51,17 +51,16 @@ def log_audit_event(
             rule_triggered=rule_triggered,
             latency_ms=latency_ms,
             client_ip=client_ip,
-            user_id=user_id
+            user_id=user_id,
         )
         db.add(event)
         db.commit()
         db.refresh(event)
         return event
 
-    except Exception as e:
-    
+    except Exception:
         db.rollback()
-        raise e
+        raise
 
     finally:
         if owns_session:
