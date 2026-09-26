@@ -1,6 +1,7 @@
 """
-Day 10 Verification Tests - LLM Semantic Judge
-Run with: python -m app.security.test_llm_guard
+tests/test_llm_guard.py -- LLM Semantic Judge Verification Suite (Day 10)
+Run with: python -m pytest tests/test_llm_guard.py -v
+     or:  python -m tests.test_llm_guard
 """
 
 import asyncio
