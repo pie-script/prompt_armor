@@ -296,8 +296,11 @@ def fetch_audit_data() -> pd.DataFrame:
             FROM audit_events 
             ORDER BY timestamp DESC
         """
-        df = pd.read_sql_query(query, conn)
-        conn.close()
+        try:
+            df = pd.read_sql_query(query, conn)
+        finally:
+            conn.close()
+
         if not df.empty:
             df["timestamp"] = pd.to_datetime(df["timestamp"])
             return df
