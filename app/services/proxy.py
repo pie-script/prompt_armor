@@ -11,6 +11,7 @@ async def forward_to_llm(sanitized_prompt: str) -> str:
             model=settings.DOWNSTREAM_LLM_MODEL,
             messages=[{"role": "user", "content": sanitized_prompt}],
             temperature=0.7,
+            timeout=20.0,
         )
         return response.choices[0].message.content or ""
     except Exception as e:
